@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Feira de Profissões 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* --- Reset e Base --- */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:'Poppins',sans-serif; background: linear-gradient(to bottom, #fdf6f0, #fff8dc); color:#333; scroll-behavior:smooth;}
+a {text-decoration:none; transition:0.3s;}
+a:hover,a:focus{color:#ff6b6b; outline:none;}
+h2{font-size:2rem; color:#ff6b6b; margin:40px 0 20px; border-bottom:3px solid #ffa94d; display:inline-block; padding-bottom:5px; animation: fadeIn 1s ease;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);}}
+
+/* --- Navegação --- */
+nav{position:fixed; top:0; width:100%; background:#ff6b6b; color:#fff; z-index:100; padding:10px 0; box-shadow:0 4px 15px rgba(0,0,0,0.2);}
+nav ul{display:flex; justify-content:center; list-style:none; gap:25px;}
+nav ul li a{color:white; font-weight:600; padding:8px 15px; border-radius:8px; transition:0.3s;}
+nav ul li a:hover,a:focus{background:#ff8787;}
+
+/* --- Cabeçalho / Banner Parallax --- */
+header{position:relative;width:100%;height:480px;display:flex;justify-content:center;align-items:center;overflow:hidden;margin-top:50px;}
+header::before{content:"";position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1;}
+header img{position:absolute;width:100%;height:100%;object-fit:cover; transform:translateZ(-1px) scale(1.2);}
+header h1{position:relative; z-index:2; color:#fff; font-size:3rem; text-align:center; padding:20px 40px; border-radius:20px; text-shadow:2px 2px 12px rgba(0,0,0,0.8); animation:slideDown 1.5s ease;}
+@keyframes slideDown{0%{opacity:0; transform:translateY(-50px);}100%{opacity:1; transform:translateY(0);}}
+
+/* --- Conteúdo principal --- */
+main{width:90%; max-width:1100px; margin:60px auto;}
+
+/* --- Card introdutório --- */
+.card{background:linear-gradient(135deg,#ffd6a5,#ffadad,#ff7597); color:#222; border-radius:25px; padding:35px; margin:25px 0; box-shadow:0 8px 25px rgba(0,0,0,0.2); text-align:center; font-size:1.2rem; animation:pulse 2s infinite alternate;}
+@keyframes pulse{0%{transform:scale(1);}100%{transform:scale(1.02);}}
+.card strong{color:#d00000;}
+
+/* --- Botões --- */
+.btn{display:inline-block;background:#ff6b6b;color:#fff;padding:12px 25px;margin-top:15px;border-radius:12px;font-weight:600; transition:0.3s;}
+.btn:hover, .btn:focus{background:#ff8787; transform:translateY(-3px); box-shadow:0 8px 20px rgba(255,107,107,0.4); outline:none;}
+
+/* --- Galeria --- */
+.galeria{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-top:40px;}
+.galeria img{width:300px;height:200px;object-fit:cover;border-radius:15px; box-shadow:0 6px 18px rgba(0,0,0,0.2); transition: transform 0.4s, filter 0.4s;}
+.galeria img:hover,.galeria img:focus{transform:scale(1.08) rotate(1deg); filter:brightness(1.1); outline:none;}
+
+/* --- Tabela / Palestras com Modal --- */
+table{width:100%;border-collapse:collapse;margin:30px 0;font-size:1rem; box-shadow:0 8px 20px rgba(0,0,0,0.1); border-radius:15px; overflow:hidden;}
+th,td{border:none; padding:15px; text-align:center;}
+th{background:#ff6b6b;color:white;font-size:1.1rem;}
+tr:nth-child(even){background:#fff0f0;} tr:nth-child(odd){background:#ffeaea;} tr:hover, tr:focus{background:#ffd6d6; transform:scale(1.01); cursor:pointer; outline:none;}
+
+/* --- Modal --- */
+.modal{display:none; position:fixed; z-index:100; left:0; top:0; width:100%; height:100%; overflow:auto; background:rgba(0,0,0,0.6);}
+.modal-content{background:#fff; margin:10% auto; padding:25px; border-radius:20px; width:80%; max-width:600px; position:relative; animation:fadeInModal 0.5s ease;}
+@keyframes fadeInModal{from{opacity:0; transform:translateY(-50px);} to{opacity:1; transform:translateY(0);}}
+.close{position:absolute;top:15px;right:20px;font-size:1.5rem;font-weight:bold;color:#ff6b6b; cursor:pointer;}
+.close:hover,.close:focus{color:#ff8787; outline:none;}
+
+/* --- Depoimentos / Carrossel --- */
+.carousel{position:relative; overflow:hidden; margin:40px 0;}
+.carousel-track{display:flex; transition:transform 0.5s ease;}
+.carousel-item{min-width:300px; margin:0 15px; background:#fff7f7; padding:20px; border-radius:20px; box-shadow:0 6px 20px rgba(0,0,0,0.2);}
+.carousel-item p{font-style:italic;}
+.carousel-controls{text-align:center;margin-top:15px;}
+.carousel-controls button{background:#ff6b6b;color:#fff;padding:10px 20px;border:none;border-radius:12px;margin:0 5px; cursor:pointer; transition:0.3s;}
+.carousel-controls button:hover, .carousel-controls button:focus{background:#ff8787; transform:translateY(-2px); outline:none;}
+
+/* --- Rodapé --- */
+footer{text-align:center;padding:30px;background:#ff6b6b;color:white;font-size:1.2rem;margin-top:60px; box-shadow:0 -5px 15px rgba(0,0,0,0.2);}
+footer i{margin-right:10px;}
+</style>
+</head>
+<body>
+
+<nav aria-label="Menu de navegação principal">
+<ul>
+<li><a href="#intro">Início</a></li>
+<li><a href="#programacao">Programação</a></li>
+<li><a href="#profissoes">Profissões</a></li>
+<li><a href="#depoimentos">Depoimentos</a></li>
+<li><a href="#galeria">Galeria</a></li>
+</ul>
+</nav>
+
+<header>
+  <img src="certa.JPG" alt="Banner da Feira de Profissões">
+  <h1>Feira de Profissões 2025</h1>
+</header>
+
+<main>
+<section id="intro">
+<div class="card">
+🌟 A <strong>Feira de Profissões 2025</strong> é um espaço interativo que apresenta diferentes áreas do mercado, aproxima de profissionais e inspira estudantes. <strong>Explore, sonhe e inspire-se! 🚀✨</strong>
+</div>
+</section>
+
+<section id="links">
+<h2>Links Úteis</h2>
+<ul>
+<li><a class="btn" href="#programacao"><i class="fa-solid fa-calendar-check"></i> Ver Programação</a></li>
+<li><a class="btn" href="https://guiadoestudante.abril.com.br/" target="_blank"><i class="fa-solid fa-globe"></i> Guia do Estudante</a></li>
+<li><a class="btn" href="programa-oficial.pdf" download><i class="fa-solid fa-download"></i> Baixar Programa Oficial</a></li>
+</ul>
+</section>
+
+<section id="profissoes">
+<h2>Profissões em Destaque</h2>
+<ul>
+<li>👩‍💻 Engenharia</li>
+<li>🩺 Medicina</li>
+<li>⚖ Direito</li>
+<li>🏛 Arquitetura</li>
+<li>💻 Ciência da Computação</li>
+</ul>
+<h2>Dicas para Escolher uma Carreira</h2>
+<ol>
+<li>Conheça suas habilidades.</li>
+<li>Pesquise sobre o mercado de trabalho.</li>
+<li>Converse com profissionais da área.</li>
+<li>Participe de eventos e palestras.</li>
+<li>Considere seus valores pessoais.</li>
+</ol>
+</section>
+
+<section id="depoimentos">
+<h2>Depoimentos de Alunos</h2>
+<div class="carousel">
+  <div class="carousel-track">
+    <div class="carousel-item"><p>"A feira abriu minha mente para profissões que eu nem imaginava!" - Ana, 2023</p></div>
+    <div class="carousel-item"><p>"Os palestrantes me inspiraram a seguir engenharia." - Lucas, 2022</p></div>
+    <div class="carousel-item"><p>"Aprendi muito sobre carreiras na área da saúde." - Mariana, 2021</p></div>
+  </div>
+  <div class="carousel-controls">
+    <button id="prev" aria-label="Anterior">&#8592;</button>
+    <button id="next" aria-label="Próximo">&#8594;</button>
+  </div>
+</div>
+</section>
+
+<section id="programacao">
+<h2>📅 Programação</h2>
+<table aria-label="Programação de palestras">
+<tr>
+<th>Nome da Palestra</th>
+<th>Profissional</th>
+<th>Horário</th>
+</tr>
+<tr tabindex="0" data-title="Carreira em Tecnologia" data-desc="A palestra abordará carreiras em TI, tendências de mercado e dicas para programadores iniciantes.">
+<td>Carreira em Tecnologia</td><td>Heloisa Dionísio</td><td>09:00</td>
+</tr>
+<tr tabindex="0" data-title="Futuro da Medicina" data-desc="Descubra o futuro da medicina, inovações tecnológicas e especializações em alta demanda.">
+<td>Futuro da Medicina</td><td>Dr. João Ligabo</td><td>10:30</td>
+</tr>
+<tr tabindex="0" data-title="O Mundo do Direito" data-desc="Exploração das diferentes áreas do direito e dicas para estudantes que desejam seguir a carreira jurídica.">
+<td>O Mundo do Direito</td><td>Maria Isabel</td><td>13:00</td>
+</tr>
+<tr tabindex="0" data-title="Arquitetura Sustentável" data-desc="Como a arquitetura pode ser sustentável e inovadora, com exemplos práticos e projetos inspiradores.">
+<td>Arquitetura Sustentável</td><td>Melissa Espíndola</td><td>15:00</td>
+</tr>
+</table>
+</section>
+
+<section id="galeria">
+<h2>Galeria da Feira</h2>
+<div class="galeria">
+<img src="feira.JPG" alt="Feira de profissões - destaque" tabindex="0">
+<img src="segunda foto.JPG" alt="Visita de estudantes" tabindex="0">
+<img src="terceira foto.JPG" alt="Palestra feira profissões" tabindex="0">
+</div>
+</section>
+
+</main>
+
+<!-- Modal para Palestras -->
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+<div class="modal-content">
+<span class="close" role="button" tabindex="0">&times;</span>
+<h2 id="modal-title"></h2>
+<p id="modal-desc"></p>
+</div>
+</div>
+
+<footer>
+<i class="fa-solid fa-copyright"></i> 2025 Feira de Profissões | Escola Marianete
+</footer>
+
+<script>
+// --- Modal Palestras ---
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modal-title');
+const modalDesc = document.getElementById('modal-desc');
+const closeBtn = document.querySelector('.close');
+
+document.querySelectorAll('table tr[data-title]').forEach(row=>{
+  row.addEventListener('click', ()=>{ showModal(row); });
+  row.addEventListener('keypress', e=>{ if(e.key==='Enter'){ showModal(row); } });
+});
+
+function showModal(row){
+  modal.style.display='block';
+  modalTitle.textContent = row.dataset.title;
+  modalDesc.textContent = row.dataset.desc;
+  closeBtn.focus();
+}
+
+closeBtn.onclick = ()=> modal.style.display='none';
+closeBtn.addEventListener('keypress', e=>{ if(e.key==='Enter'){ modal.style.display='none'; } });
+window.addEventListener('click', e=> { if(e.target==modal) modal.style.display='none'; });
+
+// --- Carrossel Depoimentos ---
+const track = document.querySelector('.carousel-track');
+const items = Array.from(track.children);
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+let index = 0;
+
+function updateCarousel(){
+  track.style.transform = `translateX(-${index * (items[0].offsetWidth + 30)}px)`;
+}
+prevBtn.onclick = ()=>{ index = (index-1+items.length)%items.length; updateCarousel();}
+nextBtn.onclick = ()=>{ index = (index+1)%items.length; updateCarousel();}
+window.addEventListener('resize', updateCarousel);
+</script>
+
+</body>
+</html>
